@@ -59,9 +59,22 @@ const Home = () => {
                 </SwiperSlide>
                 
                 
-            </Swiper>        
-            
-                
+            </Swiper> 
+
+            <h2 className='text-3xl font-semibold text-center my-10'>Discover Our Exclusive Crafts</h2>     
+            <div>
+                {/* card section */}
+            </div>
+
+            {/* <div className=''>
+            <iframe
+                className=" w-full h-500px "
+                src="https://player.vimeo.com/video/857537535?autoplay=1&mute=1"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                // Mute the video
+                ></iframe>
+            </div> */}
         </div>
     );
 };
