@@ -12,6 +12,7 @@ import AuthProvider from './firebase/AuthProvider';
 import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import UpdateInfo from './pages/UpdateInfo';
+import AddCrafts from './pages/AddCrafts';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: '/updateInfo',
         element: <UpdateInfo></UpdateInfo>
+      },
+      {
+        path:'/addcrafts',
+        element: <AddCrafts></AddCrafts>
       }
     ]
   },
