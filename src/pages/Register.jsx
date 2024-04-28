@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Register = () => {
@@ -12,9 +14,18 @@ const Register = () => {
         const email= form.email.value;
         const url= form.image.value;
         const password= form.password.value;
+        const regex = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+        if (!regex.test(password)) {
+          // setRegisterError(
+          //   "password should be atleast 6 character & contain atleast one upper and lower case character"
+          // );
+          toast.error("password must contain atleast 6 character & atleast one upper and lower case character");
+          return;
+        }
         registerUser(email,password)
         .then(result=>{
             console.log(result.user)
+            toast.success('registration Successfull')
             updateUserInfo(name,url)
             .then(() => {
                 console.log('User info updated')
@@ -24,6 +35,7 @@ const Register = () => {
               });
         })
         .catch(error=>{
+            toast.error('Registration failed')
             console.log(error.message)
         })
         form.reset();
@@ -42,6 +54,7 @@ const Register = () => {
                     <p className="text-center">Already Registered? <Link to={'/login'}><span className="text-blue-600">LogIn</span></Link></p>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     );
 };

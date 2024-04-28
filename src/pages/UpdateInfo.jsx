@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../firebase/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateInfo = () => {
     const {updateUserInfo}=useContext(AuthContext)
@@ -10,9 +12,11 @@ const UpdateInfo = () => {
         const url= form.image.value;
         updateUserInfo(name,url)
         .then(() => {
+            toast.success('Updated data Successful')
             console.log('User info updated')
         })
         .catch((error) => {
+            toast.error('Data was not updated')
             console.log(error.message);
         });
         
@@ -31,6 +35,7 @@ const UpdateInfo = () => {
 
                 
             </div>
+            <ToastContainer/>
         </div>
     );
 };

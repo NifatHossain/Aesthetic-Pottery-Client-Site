@@ -4,9 +4,10 @@ import { FcGoogle } from "react-icons/fc"
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../firebase/AuthProvider";
 import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 const LogIn = () => {
-    const location= useLocation();
     const navigate= useNavigate();
     const {signInUser,googleSignIn, githubSignIn}=useContext(AuthContext);
     const handleSignIn=(e)=>{
@@ -16,9 +17,11 @@ const LogIn = () => {
         const password= form.password.value;
         signInUser(email,password)
         .then(result=>{
+            toast.success('Login Successful')
             console.log(result.user)
         })
         .catch(error=>{
+            toast.error('Login Error')
             console.log(error.message)
         })
         form.reset();
@@ -26,10 +29,12 @@ const LogIn = () => {
     const handleGoogleLogIn=()=>{
         googleSignIn()
         .then(result=>{
+            toast.success('Login Successful')
             console.log(result.user)
-            navigate(location?.state? location.state :'/updateInfo')
+            navigate('/updateInfo')
         })
         .catch(error=>{
+            toast.error('Login Error')
             console.log(error.message)
         })
     }
@@ -37,9 +42,11 @@ const LogIn = () => {
         githubSignIn()
         .then(result=>{
             console.log(result.user)
-            navigate(location?.state? location.state :'/updateInfo')
+            toast.success('Login Successful')
+            navigate('/updateInfo')
         })
         .catch(error=>{
+            toast.error('Login Error')
             console.log(error.message)
         })
     }
@@ -60,6 +67,7 @@ const LogIn = () => {
 
                 
             </div>
+            <ToastContainer />
         </div>
     );
 };
