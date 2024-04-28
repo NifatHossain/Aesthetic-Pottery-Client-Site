@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
+import { useContext } from "react";
+import { AuthContext } from "../firebase/AuthProvider";
 
 const Navbar = () => {
+    const {user,userLogOut}=useContext(AuthContext)
+    const handleLogOut=()=>{
+        userLogOut()
+        .then(()=>{
+            console.log('Successfully Logged Out')
+        })
+        .catch((error)=>{
+            console.log(error.message)
+        })
+    }
     return (
         <div>
             <div className="navbar bg-base-100">
@@ -27,22 +39,32 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Sign Up</a>
-                    {/* avatar */}
-                    <div id='avater' className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                            <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    {
+                        user && <div>
+                            <div id='avater' className="dropdown dropdown-end">
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                    <img alt="user Image" src={user.photoURL} />
+                                    </div>
+                                </div>
+                                {/* <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                    <li><a>Logout</a></li>
+                                </ul> */}
                             </div>
+                            <Tooltip anchorSelect="#avater" style={{ backgroundColor: "rgb(241 245 249)", color: "#222" }} clickable>
+                                <p className="text-center">{user.displayName}</p>
+                                 <button onClick={handleLogOut} className="border-2 bg-slate-100 px-2 py-1 rounded-md font-semibold">Log Out</button>
+                            </Tooltip>
                         </div>
-                        {/* <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><a>Logout</a></li>
-                        </ul> */}
-                    </div>
-                    <Tooltip anchorSelect="#avater" style={{ backgroundColor: "rgb(241 245 249)", color: "#222" }} clickable>
-                        <p className="text-center">hello</p>
-                        <button className="border-2 bg-slate-100 px-2 py-1 rounded-md font-semibold">Log Out</button>
-                    </Tooltip>
+                    }
+                    {
+                        !user && <div>
+                             <Link to={'/register'}><button className="bg-gray-400 p-2 text-white rounded-md mr-2">Register</button></Link> 
+                             <Link to={'/login'}><button className="bg-green-400 p-2 text-white rounded-md ">Log In</button></Link> 
+                        </div>
+                    }
+                    
+                    
                     
                 </div>
             </div>
