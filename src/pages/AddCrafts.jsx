@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import { AuthContext } from "../firebase/AuthProvider";
 
 const AddCrafts = () => {
+    const {user}= useContext(AuthContext)
     const [subCategory, setSubCategory]=useState('')
     const [customizations, setCustomizations]=useState('')
     const handleSelect =(e)=>{
@@ -22,7 +24,10 @@ const AddCrafts = () => {
         const stock= form.stock.value;
         const sCategory = subCategory;
         const customOption= customizations;
-        const craftData= {name,image, price,rating, description, processTime, stock, sCategory, customOption}
+        const email= user.email;
+        const userName= user.displayName;
+        const craftData= {name,image, price,rating, description, processTime, stock, sCategory, customOption,email, userName}
+        console.log(craftData);
         fetch('http://localhost:5000/addcrafts',{
             method:'POST',
             headers: {
