@@ -1,11 +1,14 @@
 
 import { FcGoogle } from "react-icons/fc"
-import { FaFacebook } from "react-icons/fa"
+// import { FaFacebook } from "react-icons/fa"
+import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../firebase/AuthProvider";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 const LogIn = () => {
-    const {signInUser,googleSignIn, fbSignIn}=useContext(AuthContext);
+    const location= useLocation();
+    const navigate= useNavigate();
+    const {signInUser,googleSignIn, githubSignIn}=useContext(AuthContext);
     const handleSignIn=(e)=>{
         e.preventDefault();
         const form = e.target;
@@ -24,15 +27,17 @@ const LogIn = () => {
         googleSignIn()
         .then(result=>{
             console.log(result.user)
+            navigate(location?.state? location.state :'/updateInfo')
         })
         .catch(error=>{
             console.log(error.message)
         })
     }
-    const handleFbLogIn=()=>{
-        fbSignIn()
+    const handleGithubLogIn=()=>{
+        githubSignIn()
         .then(result=>{
             console.log(result.user)
+            navigate(location?.state? location.state :'/updateInfo')
         })
         .catch(error=>{
             console.log(error.message)
@@ -49,7 +54,8 @@ const LogIn = () => {
                     <p className="text-center">or</p>
                 </form>
                 <button onClick={handleGoogleLogIn} className="btn border-2 p-2 rounded-md bg-gray-400 text-white font-medium"> <span className="text-xl"><FcGoogle /></span>Login with Google</button>
-                <button onClick={handleFbLogIn} className="btn border-2 p-2 rounded-md bg-blue-500 text-white font-medium"><span className="text-xl"><FaFacebook /></span>Login with Facebook</button>
+                {/* <button onClick={handleFbLogIn} className="btn border-2 p-2 rounded-md bg-blue-500 text-white font-medium"><span className="text-xl"><FaFacebook /></span>Login with Facebook</button> */}
+                <button onClick={handleGithubLogIn} className="btn border-2 p-2 rounded-md bg-blue-500 text-white font-medium"><span className="text-xl"><FaGithub /></span>Login with Github</button>
                 <p className="text-center">New User? <Link to={'/register'}><span className="text-blue-600">Register</span></Link></p>
 
                 
