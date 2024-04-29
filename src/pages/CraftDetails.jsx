@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const CraftDetails = () => {
     const craftInfo = useLoaderData()
-    const{name,image,price,rating,description,processTime,customOption,sCategory}= craftInfo;
+    const{name,image,price,rating,description,processTime,customOption,sCategory,email,userName}= craftInfo;
     console.log(craftInfo);
     return (
         <div>
@@ -17,6 +17,7 @@ const CraftDetails = () => {
                     <p className="text-xl font-bold ">Delivery Time: <span className="font-semibold"> {processTime}</span></p>
                     <p className="text-xl font-bold ">Option of Customization: <span className="font-semibold">{customOption}</span> </p>
                     <p className="text-xl font-bold ">Product Description: <span className="font-semibold">{description}</span> </p>
+                    <p className="text-xl font-semibold ">Product Added by: <span className="font-normal text-base">{userName} : {email}</span> </p>
                     <button className="bg-green-400 btn font-semibold mt-5 text-white">Buy Now</button>
                 </div>
             </div>

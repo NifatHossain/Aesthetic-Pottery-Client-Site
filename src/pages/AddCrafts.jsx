@@ -83,7 +83,7 @@ const AddCrafts = () => {
                     </div>
                     
                 </div>
-                <input type="submit" className="btn border-2 p-2 rounded-md bg-green-400 text-white font-medium" value={'Submit'}/>
+                <input type="submit" className="btn border-2 p-2 rounded-md bg-green-400 text-white font-medium" value={'Add Item'}/>
 
                 
             </form>
