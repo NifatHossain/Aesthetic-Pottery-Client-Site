@@ -15,6 +15,7 @@ import UpdateInfo from './pages/UpdateInfo';
 import AddCrafts from './pages/AddCrafts';
 import CraftDetails from './pages/CraftDetails';
 import PrivateRoute from './firebase/PrivateRoute';
+import MyItems from './pages/MyItems';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
         path: '/craftDetails/:id',
         element: <PrivateRoute><CraftDetails></CraftDetails></PrivateRoute>,
         loader: ({params})=>fetch(`http://localhost:5000/craftDetails/${params.id}`)
+      },
+      {
+        path: '/myitems/:email',
+        element: <PrivateRoute><MyItems></MyItems></PrivateRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/myitems/${params.email}`)
       }
     ]
   },
