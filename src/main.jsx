@@ -13,6 +13,7 @@ import LogIn from './pages/LogIn';
 import Register from './pages/Register';
 import UpdateInfo from './pages/UpdateInfo';
 import AddCrafts from './pages/AddCrafts';
+import CraftDetails from './pages/CraftDetails';
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,8 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: ()=> fetch('http://localhost:5000/allcrafts')
       },
       {
         path: '/login',
@@ -39,6 +41,11 @@ const router = createBrowserRouter([
       {
         path:'/addcrafts',
         element: <AddCrafts></AddCrafts>
+      },
+      {
+        path: '/craftDetails/:id',
+        element: <CraftDetails></CraftDetails>,
+        loader: ({params})=>fetch(`http://localhost:5000/craftDetails/${params.id}`)
       }
     ]
   },

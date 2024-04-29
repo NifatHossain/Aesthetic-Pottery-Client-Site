@@ -6,8 +6,12 @@ import "swiper/css/effect-fade";
 // import required modules
 import {EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Fade, Slide } from 'react-awesome-reveal';
+import { useLoaderData } from 'react-router-dom';
+import CraftCard from '../components/CraftCard';
 
 const Home = () => {
+    const crafts= useLoaderData();
+    const trimedCrafts= crafts.slice(1,7);
     return (
         <div className='bg-[#efefef] raleway_font'>
             <Swiper
@@ -62,8 +66,11 @@ const Home = () => {
             </Swiper> 
 
             <h2 className='text-3xl font-semibold text-center my-10'>Discover Our Exclusive Crafts</h2>     
-            <div>
-                {/* card section */}
+            <div className='grid grid-cols-3 mx-auto gap-4'>
+                {/* <h2 className='text-3xl font-semibold text-center'>{trimedCrafts.length}</h2> */}
+                {
+                    trimedCrafts.map(craft=><CraftCard key={craft._id} craft={craft}></CraftCard>)
+                }
             </div>
 
             {/* <div className=''>

@@ -28,6 +28,7 @@ const AddCrafts = () => {
         const userName= user.displayName;
         const craftData= {name,image, price,rating, description, processTime, stock, sCategory, customOption,email, userName}
         console.log(craftData);
+        form.reset();
         fetch('http://localhost:5000/addcrafts',{
             method:'POST',
             headers: {
