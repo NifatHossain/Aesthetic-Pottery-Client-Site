@@ -68,8 +68,9 @@ const Home = () => {
                 
             </Swiper> 
 
+            <div className='p-3'>
             <h2 className='text-3xl font-semibold text-center my-10'>Discover Our Exclusive Crafts</h2>     
-            <div className='grid grid-cols-3 mx-auto gap-4'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 mx-auto gap-4'>
                 {/* <h2 className='text-3xl font-semibold text-center'>{trimedCrafts.length}</h2> */}
                 {
                     trimedCrafts.map(craft=><CraftCard key={craft._id} craft={craft}></CraftCard>)
@@ -93,6 +94,7 @@ const Home = () => {
             </div> */}
             <PotteryClass></PotteryClass>
             <OurMission></OurMission>
+            </div>
         </div>
     );
 };

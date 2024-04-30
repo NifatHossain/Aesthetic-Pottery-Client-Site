@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { AuthContext } from "../firebase/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddCrafts = () => {
     const {user}= useContext(AuthContext)
@@ -39,12 +41,15 @@ const AddCrafts = () => {
         .then(res=>res.json())
         .then(data=>{
             console.log(data)
+            if(data.acknowledged===true){
+                toast.success('Successfully Added')
+            }
         })
     }
     return (
         <div>
             <h1 className="text-4xl font-semibold text-center">Add Items</h1>
-            <div className="w-1/2 mx-auto mt-6">
+            <div className="w-full md:w-1/2 mx-auto mt-6 p-2">
             <form onSubmit={handleSubmit} className="flex flex-col gap-3 mx-auto">
                 <div className="flex flex-col gap-3 justify-around">
                     <input type="text" name="name" className="border-2 p-2 rounded-md " placeholder="Item Name" />
@@ -62,7 +67,7 @@ const AddCrafts = () => {
                 <div className="flex flex-col gap-3 justify-around">
                     <input type="number" name="stock" placeholder="Stock Status" className="border-2 p-2 rounded-md "/>
                 </div>
-                <div className="flex justify-around">
+                <div className="flex flex-col md:flex-row gap-3 justify-around">
                     <div className="dropdown">
                     <div tabIndex={0} role="" className="border-2 p-2  rounded-md btn bg-white">Select SubCategory<FaChevronDown /></div>
                     <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
@@ -88,6 +93,7 @@ const AddCrafts = () => {
                 
             </form>
             </div>
+            <ToastContainer/>
         </div>
     );
 };

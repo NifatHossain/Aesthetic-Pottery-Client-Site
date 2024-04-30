@@ -7,7 +7,7 @@ const OurMission = () => {
       <div className="card w-full bg-base-100 image-full">
                 <figure><img className="w-full" src="https://i.ibb.co/9vnKVtp/slider4.jpg" alt="Shoes" /></figure>
                 <div className="flex flex-col card-body">
-                    <h2 className="text-3xl font-bold text-center text-white">Explore your Inner Artist</h2>
+                    <h2 className="text-3xl font-bold text-center text-white">Reveal Our Culture</h2>
                     <br />
                     <p className="text-center font-medium text-xl">
                         &quot;Aesthetic Pottery&quot; is an online shop celebrating Bangladesh&apos;s pottery

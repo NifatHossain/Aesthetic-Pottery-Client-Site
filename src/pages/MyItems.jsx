@@ -45,10 +45,10 @@ const MyItems = () => {
                 <Select onChange={handleChange} options={options} />
             </div>
             
-            <div className="grid grid-cols-3 gap-4 mt-5">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-5">
             {
                 items.map(item=><div  key={item._id}>
-                    <div className={`w-96 relative p-8 border-2 bg-slate-100 mx-auto rounded-md flex flex-col gap-3 ${value?((value=='NO' && item.customOption=='NO')? 'hidden':(value=='YES' && item.customOption=='YES')? 'block':'hidden'):'block'}`}>
+                    <div className={`relative border-2 p-4 bg-slate-100 mx-auto rounded-md flex flex-col gap-3 ${value?((value=='NO' && item.customOption=='NO')? 'hidden':(value=='YES' && item.customOption=='YES')? 'block':'hidden'):'block'}`}>
                         <img src={item.image} alt="" />
                         <div className="flex flex-col gap-3">
                             <h2 className="text-xl font-semibold">{item.name}</h2>
