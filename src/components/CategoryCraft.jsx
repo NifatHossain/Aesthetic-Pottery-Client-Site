@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const CategoryCraft = () => {
     const [categories, setCategories]=useState([])
     // const categories= useLoaderData();
-    fetch('http://localhost:5000/categories')
+    fetch('https://aesthetic-pottery-server.vercel.app/categories')
     .then(res=>res.json())
     .then(data=>{
         setCategories(data)

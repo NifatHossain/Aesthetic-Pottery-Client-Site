@@ -98,7 +98,7 @@ const router = createBrowserRouter([
       {
         path: '/categories/:name',
         element: <CraftByCategory></CraftByCategory>,
-        loader: ({params})=>fetch(`http://localhost:5000/categories/${params.name}`)
+        loader: ({params})=>fetch(`https://aesthetic-pottery-server.vercel.app/categories/${params.name}`)
       }
       
     ],
