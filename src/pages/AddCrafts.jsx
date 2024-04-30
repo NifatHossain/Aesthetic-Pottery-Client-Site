@@ -29,7 +29,7 @@ const AddCrafts = () => {
         const craftData= {name,image, price,rating, description, processTime, stock, sCategory, customOption,email, userName}
         console.log(craftData);
         form.reset();
-        fetch('http://localhost:5000/addcrafts',{
+        fetch('https://aesthetic-pottery-server.vercel.app/addcrafts',{
             method:'POST',
             headers: {
                 "Content-Type": "application/json",

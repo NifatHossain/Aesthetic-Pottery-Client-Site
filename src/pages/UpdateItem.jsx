@@ -35,7 +35,7 @@ const UpdateItem = () => {
         const craftData= {name,image, price,rating, description, processTime, stock, sCategory, customOption,email, userName}
         console.log(craftData);
         form.reset();
-        fetch(`http://localhost:5000/updateitem/${_id}`,{
+        fetch(`https://aesthetic-pottery-server.vercel.app/updateitem/${_id}`,{
             method:'PATCH',
             headers: {
                 "Content-Type": "application/json",

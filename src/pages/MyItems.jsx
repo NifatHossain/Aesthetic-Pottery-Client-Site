@@ -14,7 +14,7 @@ const MyItems = () => {
         console.log(value)
     }
     const handleDelete=(id)=>{
-        fetch(`http://localhost:5000/deletecraft/${id}`,{
+        fetch(`https://aesthetic-pottery-server.vercel.app/deletecraft/${id}`,{
             method:'DELETE',
         })
         .then(res=>res.json())
