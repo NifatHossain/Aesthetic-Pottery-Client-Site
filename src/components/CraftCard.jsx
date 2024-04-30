@@ -6,8 +6,8 @@ const CraftCard = ({craft}) => {
     const stockInt=(parseInt(stock))
     return (
         <div>
-            <div className="w-96 relative p-8 border-2 bg-slate-100 mx-auto rounded-md flex flex-col gap-3">
-                <img src={image} alt="" />
+            <div className=" relative p-8 border-2 bg-slate-100 mx-auto rounded-md flex flex-col gap-3">
+                <img className="rounded-md" src={image} alt="" />
                 <div className="flex flex-col gap-3">
                     <h2 className="text-xl font-semibold">{name}</h2>
                     <div className="flex justify-around">
