@@ -2,13 +2,33 @@ import { Link, useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import Select from 'react-select'
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyItems = () => {
-    const items= useLoaderData();
+    const loadedItems= useLoaderData();
+    const [items,setItems]= useState(loadedItems)
     const [value,setvalue]=useState(null)
     const handleChange=(event)=>{
         setvalue(event.target.value);
         console.log(value)
+    }
+    const handleDelete=(id)=>{
+        fetch(`http://localhost:5000/deletecraft/${id}`,{
+            method:'DELETE',
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if (data.deletedCount === 1) {
+                console.log("Successfully deleted one document.");
+                toast.success('Product Deleted successfully')
+                const remainings= items.filter(item=>item._id != id)
+                setItems(remainings);
+              } else {
+                toast.error('Could not delete Product !!')
+                console.log("No documents matched the query. Deleted 0 documents.");
+              }
+        })
     }
     const options = [
         { value: 'all', label: 'Show All' },
@@ -55,13 +75,14 @@ const MyItems = () => {
                             }
                         </div>
                         <div className="flex gap-3">
-                        <Link to={`/updateitem/${item._id}`}><button className="w-full p-2 rounded-md bg-green-400 text-white font-semibold">Update</button></Link>
-                        <button className="w-full p-2 rounded-md bg-orange-400 text-white font-semibold">Delete</button>
+                        <Link className="w-full" to={`/updateitem/${item._id}`}><button className="w-full p-2 rounded-md bg-green-400 text-white font-semibold">Update</button></Link>
+                        <button onClick={()=>handleDelete(item._id)} className="w-full p-2 rounded-md bg-orange-400 text-white font-semibold">Delete</button>
                         </div>
                     </div> 
                 </div>)
             }
             </div>
+            <ToastContainer/>
         </div>
     );
 };

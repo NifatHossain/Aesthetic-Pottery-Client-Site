@@ -6,7 +6,7 @@ import "swiper/css/effect-fade";
 // import required modules
 import {EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Fade, Slide } from 'react-awesome-reveal';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import CraftCard from '../components/CraftCard';
 
 const Home = () => {
@@ -71,7 +71,9 @@ const Home = () => {
                 {
                     trimedCrafts.map(craft=><CraftCard key={craft._id} craft={craft}></CraftCard>)
                 }
+                
             </div>
+            <div className='flex justify-center py-5'><Link to={'/allcrafts'} className='bg-green-400 text-white font-semibold py-2 px-[125px] rounded-md '>show all</Link></div>
 
             {/* <div className=''>
             <iframe

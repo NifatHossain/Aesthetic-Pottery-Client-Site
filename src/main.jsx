@@ -17,6 +17,7 @@ import CraftDetails from './pages/CraftDetails';
 import PrivateRoute from './firebase/PrivateRoute';
 import MyItems from './pages/MyItems';
 import UpdateItem from './pages/UpdateItem';
+import AllCrafts from './pages/AllCrafts';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,11 @@ const router = createBrowserRouter([
         path:'/updateitem/:id',
         element:<PrivateRoute><UpdateItem></UpdateItem></PrivateRoute>,
         loader: ({params})=>fetch(`http://localhost:5000/craftDetails/${params.id}`)
+      },
+      {
+        path: '/allcrafts',
+        element:<AllCrafts></AllCrafts>,
+        loader: ()=> fetch('http://localhost:5000/allcrafts')
       }
     ]
   },

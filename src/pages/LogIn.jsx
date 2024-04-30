@@ -4,10 +4,11 @@ import { FcGoogle } from "react-icons/fc"
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../firebase/AuthProvider";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 const LogIn = () => {
+    const location = useLocation();
     const navigate= useNavigate();
     const {signInUser,googleSignIn, githubSignIn}=useContext(AuthContext);
     const handleSignIn=(e)=>{
@@ -18,6 +19,7 @@ const LogIn = () => {
         signInUser(email,password)
         .then(result=>{
             toast.success('Login Successful')
+            setTimeout(()=>navigate(location?.state? location.state:'/'),2000)
             console.log(result.user)
         })
         .catch(error=>{
