@@ -15,6 +15,7 @@ import PrivateRoute from "./firebase/PrivateRoute";
 import MyItems from "./pages/MyItems";
 import UpdateItem from "./pages/UpdateItem";
 import AllCrafts from "./pages/AllCrafts";
+import CraftByCategory from "./pages/CraftByCategory";
 
 const router = createBrowserRouter([
   {
@@ -94,6 +95,12 @@ const router = createBrowserRouter([
             "https://aesthetic-pottery-server.vercel.app/allcrafts"
           ),
       },
+      {
+        path: '/categories/:name',
+        element: <CraftByCategory></CraftByCategory>,
+        loader: ({params})=>fetch(`http://localhost:5000/categories/${params.name}`)
+      }
+      
     ],
   },
 ]);

@@ -8,6 +8,8 @@ import {EffectFade, Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Fade, Slide } from 'react-awesome-reveal';
 import { Link, useLoaderData } from 'react-router-dom';
 import CraftCard from '../components/CraftCard';
+import CategoryCraft from '../components/CategoryCraft';
+import PotteryClass from '../components/PotteryClass';
 
 const Home = () => {
     const crafts= useLoaderData();
@@ -74,7 +76,11 @@ const Home = () => {
                 
             </div>
             <div className='flex justify-center py-5'><Link to={'/allcrafts'} className='bg-green-400 text-white font-semibold py-2 px-[125px] rounded-md '>show all</Link></div>
-
+            
+            <div className="w-full p-2 my-5 rounded-md">
+                <h2 className="text-center text-3xl font-semibold">Explore By Categories</h2>
+            </div>
+            <CategoryCraft></CategoryCraft>
             {/* <div className=''>
             <iframe
                 className=" w-full h-500px "
@@ -84,6 +90,7 @@ const Home = () => {
                 // Mute the video
                 ></iframe>
             </div> */}
+            <PotteryClass></PotteryClass>
         </div>
     );
 };
