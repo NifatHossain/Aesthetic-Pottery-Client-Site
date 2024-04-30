@@ -10,6 +10,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import CraftCard from '../components/CraftCard';
 import CategoryCraft from '../components/CategoryCraft';
 import PotteryClass from '../components/PotteryClass';
+import OurMission from '../components/OurMission';
 
 const Home = () => {
     const crafts= useLoaderData();
@@ -91,6 +92,7 @@ const Home = () => {
                 ></iframe>
             </div> */}
             <PotteryClass></PotteryClass>
+            <OurMission></OurMission>
         </div>
     );
 };
